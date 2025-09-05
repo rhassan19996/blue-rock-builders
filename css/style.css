@@ -1,0 +1,165 @@
+/* css/style.css */
+.nav-link {
+	@apply text-gray-700 hover:text-yellow-600 font-medium transition duration-200;
+}
+/* Optional: Smooth pointer-following animation */
+#hover-circle {
+	pointer-events: none;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hero Section */
+/* Slow pulse animations for floating circles */
+@keyframes pulse-slow {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.2;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 0.25;
+	}
+}
+
+@keyframes pulse-slower {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.1;
+	}
+	50% {
+		transform: scale(1.15);
+		opacity: 0.15;
+	}
+}
+
+.animate-pulse-slow {
+	animation: pulse-slow 6s infinite ease-in-out;
+}
+
+.animate-pulse-slower {
+	animation: pulse-slower 8s infinite ease-in-out;
+}
+/* Floating sparkle animations from before */
+@keyframes float-slow {
+	0%,
+	100% {
+		transform: translateY(0px) translateX(0px);
+	}
+	50% {
+		transform: translateY(-10px) translateX(5px);
+	}
+}
+@keyframes float-slower {
+	0%,
+	100% {
+		transform: translateY(0px) translateX(0px);
+	}
+	50% {
+		transform: translateY(-5px) translateX(-5px);
+	}
+}
+@keyframes float-medium {
+	0%,
+	100% {
+		transform: translateY(0px) translateX(0px);
+	}
+	50% {
+		transform: translateY(-8px) translateX(3px);
+	}
+}
+
+.animate-floating-slow {
+	animation: float-slow 6s ease-in-out infinite;
+}
+.animate-floating-slower {
+	animation: float-slower 8s ease-in-out infinite;
+}
+.animate-floating-medium {
+	animation: float-medium 5s ease-in-out infinite;
+}
+
+/* Glimmer / diagonal light streak animations */
+@keyframes glimmer-slow {
+	0% {
+		transform: translateX(-50%) translateY(0) rotate(-12deg);
+		opacity: 0.2;
+	}
+	50% {
+		transform: translateX(50%) translateY(5px) rotate(-12deg);
+		opacity: 0.35;
+	}
+	100% {
+		transform: translateX(-50%) translateY(0) rotate(-12deg);
+		opacity: 0.2;
+	}
+}
+@keyframes glimmer-slower {
+	0% {
+		transform: translateX(50%) translateY(0) rotate(6deg);
+		opacity: 0.15;
+	}
+	50% {
+		transform: translateX(-50%) translateY(-5px) rotate(6deg);
+		opacity: 0.3;
+	}
+	100% {
+		transform: translateX(50%) translateY(0) rotate(6deg);
+		opacity: 0.15;
+	}
+}
+@keyframes glimmer-medium {
+	0% {
+		transform: translateX(-30%) translateY(0) rotate(-6deg);
+		opacity: 0.1;
+	}
+	50% {
+		transform: translateX(30%) translateY(3px) rotate(-6deg);
+		opacity: 0.25;
+	}
+	100% {
+		transform: translateX(-30%) translateY(0) rotate(-6deg);
+		opacity: 0.1;
+	}
+}
+@keyframes float-slow {
+	0%,
+	100% {
+		transform: translateY(0px) translateX(0px);
+	}
+	50% {
+		transform: translateY(-10px) translateX(5px);
+	}
+}
+.animate-floating-slow {
+	animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes glimmer-slow {
+	0% {
+		transform: translateX(-50%) translateY(0) rotate(-12deg);
+		opacity: 0.2;
+	}
+	50% {
+		transform: translateX(50%) translateY(5px) rotate(-12deg);
+		opacity: 0.35;
+	}
+	100% {
+		transform: translateX(-50%) translateY(0) rotate(-12deg);
+		opacity: 0.2;
+	}
+}
+.animate-glimmer-slow {
+	animation: glimmer-slow 6s ease-in-out infinite;
+}
+
+.animate-glimmer-slow {
+	animation: glimmer-slow 6s ease-in-out infinite;
+}
+.animate-glimmer-slower {
+	animation: glimmer-slower 8s ease-in-out infinite;
+}
+.animate-glimmer-medium {
+	animation: glimmer-medium 5s ease-in-out infinite;
+}
