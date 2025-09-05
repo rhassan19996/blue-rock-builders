@@ -7,13 +7,14 @@ export default async function handler(req, res) {
 
 	const { name, email, message, recaptcha } = req.body;
 
-	// Verify reCAPTCHA
+	// 🔐 Verify reCAPTCHA
 	const secret = process.env.RECAPTCHA_SECRET;
 	const verify = await fetch(
 		`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${recaptcha}`,
 		{ method: 'POST' }
 	);
 	const captchaData = await verify.json();
+
 	if (!captchaData.success)
 		return res.status(400).json({ error: 'Failed reCAPTCHA verification' });
 
@@ -28,9 +29,9 @@ export default async function handler(req, res) {
 			}
 		);
 
-		res.status(200).json({ success: true });
+		return res.status(200).json({ success: true });
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Email sending failed' });
+		return res.status(500).json({ error: 'Email sending failed' });
 	}
 }
