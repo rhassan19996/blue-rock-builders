@@ -58,13 +58,14 @@ function showBanner(id, message) {
 	const banner = document.getElementById(id);
 	banner.querySelector('span').textContent = message;
 
-	// Show with entrance animation
-	banner.classList.remove('hidden', '-translate-y-5');
-	banner.classList.add('opacity-100', 'translate-y-0');
+	// Show with slide-up animation
+	banner.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+	banner.classList.add('translate-y-0', 'opacity-100');
 
 	// Auto-hide after 4 seconds
 	setTimeout(() => {
-		banner.classList.add('-translate-y-5', 'opacity-0');
+		banner.classList.remove('translate-y-0', 'opacity-100');
+		banner.classList.add('translate-y-10', 'opacity-0');
 		setTimeout(() => banner.classList.add('hidden'), 500);
 	}, 4000);
 }
