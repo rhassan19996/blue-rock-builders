@@ -1,91 +1,49 @@
-// ESM syntax for Node.js 18+ on Vercel
+import sgMail from '@sendgrid/mail';
 import fetch from 'node-fetch';
-import emailjs from '@emailjs/nodejs';
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function handler(req, res) {
+	// Only accept POST requests
 	if (req.method !== 'POST') {
 		return res.status(405).json({ error: 'Method not allowed' });
 	}
 
+	const { name, email, message, recaptcha } = req.body;
+
+	if (!name || !email || !message || !recaptcha) {
+		return res.status(400).json({ error: 'Missing fields' });
+	}
+
 	try {
-		const { name, email, message, recaptcha } = req.body;
-		console.log('📨 Incoming request:', { name, email, message, recaptcha });
-
-		// Check required environment variables
-		const {
-			RECAPTCHA_SECRET,
-			EMAILJS_SERVICE,
-			EMAILJS_TEMPLATE,
-			EMAILJS_PUBLIC,
-			EMAILJS_PRIVATE,
-		} = process.env;
-		if (
-			!RECAPTCHA_SECRET ||
-			!EMAILJS_SERVICE ||
-			!EMAILJS_TEMPLATE ||
-			!EMAILJS_PUBLIC ||
-			!EMAILJS_PRIVATE
-		) {
-			console.error('❌ Missing one or more environment variables');
-			return res.status(500).json({ error: 'Server configuration error' });
-		}
-
-		// Verify reCAPTCHA
-		const verifyResponse = await fetch(
-			`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptcha}`,
+		// 1️⃣ Verify reCAPTCHA
+		const captchaRes = await fetch(
+			`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptcha}`,
 			{ method: 'POST' }
 		);
-		const captchaData = await verifyResponse.json();
-		console.log('🔎 Captcha result:', captchaData);
+		const captchaData = await captchaRes.json();
 
 		if (!captchaData.success) {
 			return res.status(400).json({ error: 'Failed reCAPTCHA verification' });
 		}
 
-		// Send email via EmailJS
-		await emailjs.send(
-			EMAILJS_SERVICE,
-			EMAILJS_TEMPLATE,
-			{
-				title: `Message from ${name}`, // Subject placeholder
-				name, // {{name}}
-				email, // {{email}}
-				message, // {{message}}
-				time: new Date().toLocaleString(), // {{time}}
-			},
-			{
-				publicKey: EMAILJS_PUBLIC,
-				privateKey: EMAILJS_PRIVATE,
-			}
-		);
+		// 2️⃣ Send email via SendGrid
+		await sgMail.send({
+			to: process.env.CONTACT_TO_EMAIL,
+			from: process.env.CONTACT_TO_EMAIL, // must be your verified sender
+			subject: `Contact Form Message from ${name}`,
+			text: `${message}\nFrom: ${name} <${email}>`,
+			html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br/>${message}</p>
+      `,
+		});
 
-		console.log('✅ Email sent successfully!');
+		// 3️⃣ Return success
 		return res.status(200).json({ success: true });
 	} catch (err) {
-		console.error('❌ Function crashed:', err);
+		console.error('Error sending email:', err);
 		return res.status(500).json({ error: 'Email sending failed' });
 	}
-}
-try {
-	const response = await emailjs.send(
-		process.env.EMAILJS_SERVICE,
-		process.env.EMAILJS_TEMPLATE,
-		{
-			title: `Message from ${name}`,
-			name,
-			email,
-			message,
-			time: new Date().toLocaleString(),
-		},
-		{
-			publicKey: process.env.EMAILJS_PUBLIC,
-			privateKey: process.env.EMAILJS_PRIVATE,
-		}
-	);
-
-	console.log('✅ EmailJS response:', response);
-	return res.status(200).json({ success: true });
-} catch (err) {
-	console.error('❌ EmailJS error:', err);
-	return res.status(500).json({ error: 'Email sending failed' });
 }
