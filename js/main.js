@@ -36,7 +36,7 @@ if (form) {
 				grecaptcha.reset();
 				showBanner(
 					'successBanner',
-					' 🙌 Message sent! We will reply back to you soon.'
+					' 😎 🙌 Message sent! We will reply back to you soon.'
 				);
 			} else {
 				showBanner(
