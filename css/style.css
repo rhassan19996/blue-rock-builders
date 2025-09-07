@@ -163,3 +163,41 @@
 .animate-glimmer-medium {
 	animation: glimmer-medium 5s ease-in-out infinite;
 }
+@keyframes bounce-right {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(10px);
+	}
+}
+@keyframes bounce-left {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-10px);
+	}
+}
+.animate-bounce-right {
+	animation: bounce-right 1s infinite;
+}
+.animate-bounce-left {
+	animation: bounce-left 1s infinite;
+}
+.custom-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	cursor: pointer;
+}
+/* Optional: gradient hover effect */
+.text-gradient-blue {
+	background: linear-gradient(90deg, #3b82f6, #06b6d4);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

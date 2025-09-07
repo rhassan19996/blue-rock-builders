@@ -21,93 +21,90 @@
 			rel="stylesheet"
 			href="css/style.css"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+		/>
 	</head>
 	<body class="bg-gray-50">
-		<!-- Navbar -->
-		<nav class="bg-white shadow-md sticky top-0 z-50">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<!-- Modern Navbar -->
+		<nav class="fixed w-full bg-white/70 backdrop-blur-md shadow-md z-50">
+			<div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
 				<div class="flex justify-between items-center h-16">
-					<!-- Logo and Company Name -->
-					<div class="flex-shrink-0 relative">
-						<a
-							href="index.html"
-							class="flex items-center gap-3 group relative overflow-hidden"
+					<!-- Logo -->
+					<a
+						href="#hero"
+						class="flex items-center gap-3 group relative overflow-hidden"
+					>
+						<!-- Logo -->
+						<div
+							class="p-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg shadow-md"
 						>
-							<!-- Trailing circle -->
+							<img
+								src="images/logo.png"
+								alt="BlueRock Logo"
+								class="h-8 w-8 object-contain"
+							/>
+						</div>
+
+						<!-- Animated Company Name -->
+						<span
+							class="text-2xl font-extrabold tracking-wide transition-all duration-500"
+						>
 							<span
-								class="absolute w-20 h-20 bg-blue-400 rounded-full opacity-30 blur-xl pointer-events-none transform scale-0 transition-all duration-500 ease-out"
-								id="hover-circle"
-							></span>
-
-							<!-- Logo -->
-							<div
-								class="p-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl shadow-md z-10"
+								class="text-gray-800 group-hover:text-blue-500 transition-colors duration-500"
 							>
-								<img
-									src="images/logo.png"
-									alt="BlueRock Builders Logo"
-									class="h-8 w-8 object-contain"
-								/>
-							</div>
-
-							<!-- Company Name -->
-							<span class="text-2xl font-extrabold tracking-wide z-10 relative">
-								<span class="text-gray-800">BlueRock</span>
-								<span class="text-blue-500">Builders</span>
+								BlueRock
 							</span>
-						</a>
-					</div>
+							<span
+								class="text-blue-500 group-hover:text-gray-800 transition-colors duration-500"
+							>
+								Builders
+							</span>
+						</span>
+					</a>
 
 					<!-- Desktop Menu -->
-					<div class="hidden md:flex space-x-6 items-center">
-						<!-- Home -->
+					<div class="hidden md:flex items-center space-x-8">
 						<a
-							href="index.html"
-							class="relative text-gray-700 font-medium tracking-wide transition-all duration-300 hover:text-blue-600 group"
+							href="#hero"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
 							Home
 							<span
 								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
 							></span>
 						</a>
-
-						<!-- About -->
 						<a
-							href="about.html"
-							class="relative text-gray-700 font-medium tracking-wide transition-all duration-300 hover:text-blue-600 group"
+							href="#about"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
 							About
 							<span
 								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
 							></span>
 						</a>
-
-						<!-- Services -->
 						<a
-							href="services.html"
-							class="relative text-gray-700 font-medium tracking-wide transition-all duration-300 hover:text-blue-600 group"
+							href="#services"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
 							Services
 							<span
 								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
 							></span>
 						</a>
-
-						<!-- Projects -->
 						<a
-							href="projects.html"
-							class="relative text-gray-700 font-medium tracking-wide transition-all duration-300 hover:text-blue-600 group"
+							href="#projects"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
 							Projects
 							<span
 								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
 							></span>
 						</a>
-
-						<!-- Contact -->
 						<a
 							href="contact.html"
-							class="relative text-gray-700 font-medium tracking-wide transition-all duration-300 hover:text-blue-600 group"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
 							Contact
 							<span
@@ -120,9 +117,22 @@
 					<div class="md:hidden">
 						<button
 							id="menu-btn"
-							class="text-gray-700 focus:outline-none text-2xl"
+							class="text-gray-700 focus:outline-none text-3xl"
 						>
-							☰
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-8 w-8"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 8h16M4 16h16"
+								/>
+							</svg>
 						</button>
 					</div>
 				</div>
@@ -131,79 +141,88 @@
 			<!-- Mobile Menu -->
 			<div
 				id="mobile-menu"
-				class="hidden md:hidden px-2 pt-2 pb-3 space-y-1"
+				class="hidden md:hidden px-6 py-4 space-y-4 bg-white/90 backdrop-blur-md shadow-lg rounded-b-lg"
 			>
 				<a
-					href="index.html"
-					class="nav-link block transition-all duration-500 hover:text-blue-500 hover:scale-110"
+					href="#hero"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Home</a
 				>
 				<a
-					href="about.html"
-					class="nav-link block transition-all duration-500 hover:text-blue-500 hover:scale-110"
+					href="#about"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>About</a
 				>
 				<a
-					href="services.html"
-					class="nav-link block transition-all duration-500 hover:text-blue-500 hover:scale-110"
+					href="#services"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Services</a
 				>
 				<a
-					href="projects.html"
-					class="nav-link block transition-all duration-500 hover:text-blue-500 hover:scale-110"
+					href="#projects"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Projects</a
 				>
 				<a
 					href="contact.html"
-					class="nav-link block transition-all duration-500 hover:text-blue-500 hover:scale-110"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Contact</a
 				>
 			</div>
 		</nav>
-		<!-- Hero Content -->
-		<section class="relative bg-gray-50 overflow-hidden">
-			<!-- Background Gradient -->
+
+		<!-- Main Content -->
+		<!-- Modern Full-Height Hero Section -->
+		<section
+			id="hero"
+			class="relative w-full bg-gray-50 overflow-hidden min-h-[50vh] lg:min-h-[60vh] flex items-center"
+		>
+			<!-- Background gradient & floating circles -->
 			<div class="absolute inset-0">
 				<div
 					class="absolute inset-0 bg-gradient-to-r from-blue-100 via-white to-gray-50"
 				></div>
-
 				<!-- Floating circles -->
 				<span
-					class="absolute w-24 h-24 bg-blue-300 rounded-full opacity-20 blur-3xl top-10 left-10 animate-pulse-slow"
+					class="absolute w-28 h-28 bg-blue-300 rounded-full opacity-20 blur-3xl top-12 left-12 animate-pulse-slow"
 				></span>
 				<span
-					class="absolute w-32 h-32 bg-blue-400 rounded-full opacity-10 blur-3xl top-32 right-20 animate-pulse-slower"
+					class="absolute w-36 h-36 bg-blue-400 rounded-full opacity-10 blur-3xl top-32 right-24 animate-pulse-slower"
 				></span>
 			</div>
 
-			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center py-24">
+			<div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+				<div class="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center h-full">
 					<!-- Hero Text -->
-					<div class="sm:text-center lg:text-left lg:col-span-7">
+					<div
+						class="sm:text-center lg:text-left lg:col-span-7 flex flex-col justify-center h-full space-y-12"
+					>
 						<h1
-							class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight relative z-10"
+							class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight relative z-10"
 						>
 							Building <span class="text-blue-500">Dreams</span>, One Project at
 							a Time
 						</h1>
-						<p class="mt-6 text-lg text-gray-700 relative z-10">
+
+						<p class="text-lg md:text-xl text-gray-700 relative z-10 max-w-2xl">
 							BlueRock Builders delivers high-quality construction solutions for
 							residential and commercial projects. Reliable, professional, and
 							precise.
 						</p>
+
+						<!-- Buttons -->
 						<div
-							class="mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4 relative z-10"
+							class="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-8 relative z-10"
 						>
 							<a
 								href="services.html"
-								class="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium shadow-md hover:bg-blue-600 transition"
+								class="px-8 py-4 bg-blue-600 text-white rounded-2xl font-semibold shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
 							>
 								Our Services
 							</a>
 							<a
 								href="contact.html"
-								class="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition"
+								class="px-8 py-4 bg-white/30 backdrop-blur-md border border-blue-500 text-blue-500 rounded-2xl font-semibold hover:bg-white/50 transition transform hover:scale-105"
 							>
 								Contact Us
 							</a>
@@ -212,13 +231,39 @@
 
 					<!-- Hero Image -->
 					<div
-						class="mt-12 lg:mt-0 lg:col-span-5 flex justify-center lg:justify-end relative z-10"
+						class="mt-12 lg:mt-0 lg:col-span-5 relative h-full flex justify-center lg:justify-end"
 					>
-						<img
-							src="images/hero-construction.jpg"
-							alt="Construction Work"
-							class="rounded-lg shadow-lg w-full max-w-md"
-						/>
+						<div
+							class="relative rounded-3xl shadow-2xl overflow-hidden h-full w-full max-w-md"
+						>
+							<img
+								src="images/hero-construction.jpg"
+								alt="Construction Work"
+								class="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
+							/>
+
+							<!-- Floating shapes + glimmers -->
+							<span
+								class="absolute w-14 h-14 bg-blue-300/30 rounded-full top-4 left-6 blur-2xl animate-floating-slow"
+							></span>
+							<span
+								class="absolute w-20 h-20 bg-blue-400/20 rounded-full bottom-8 right-10 blur-3xl animate-floating-medium"
+							></span>
+							<span
+								class="absolute w-10 h-10 bg-blue-200/25 rounded-full top-1/3 right-1/4 blur-xl animate-floating-slower"
+							></span>
+
+							<!-- Diagonal Glimmer Streaks -->
+							<span
+								class="absolute w-1/2 h-1 bg-white/20 blur-xl -rotate-12 top-10 left-0 animate-glimmer-slow"
+							></span>
+							<span
+								class="absolute w-1/3 h-1 bg-white/15 blur-xl rotate-6 bottom-16 right-0 animate-glimmer-slower"
+							></span>
+							<span
+								class="absolute w-2/3 h-1 bg-white/10 blur-xl -rotate-6 top-1/2 right-0 animate-glimmer-medium"
+							></span>
+						</div>
 					</div>
 				</div>
 
@@ -227,7 +272,7 @@
 					class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10"
 				>
 					<svg
-						class="w-6 h-6 text-blue-500"
+						class="w-8 h-8 text-blue-500"
 						fill="none"
 						stroke="currentColor"
 						stroke-width="2"
@@ -242,27 +287,262 @@
 				</div>
 			</div>
 		</section>
-		<!-- Services Section -->
-		<section class="relative bg-gray-50 py-24">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+		<!-- Modern Gallery Section -->
+		<section class="relative w-full py-32 bg-gray-50 overflow-hidden">
+			<!-- Floating accent shapes -->
+			<span
+				class="absolute w-32 h-32 bg-blue-200/20 rounded-full blur-2xl top-10 left-4 animate-float-slow"
+			></span>
+			<span
+				class="absolute w-24 h-24 bg-blue-300/10 rounded-full blur-xl bottom-16 right-8 animate-float-medium"
+			></span>
+			<span
+				class="absolute w-20 h-20 bg-blue-400/20 rounded-full blur-xl top-1/3 right-1/4 animate-float-slower"
+			></span>
+
+			<div class="relative max-w-7xl mx-auto px-6 z-10">
 				<!-- Section Header -->
 				<div class="text-center mb-16">
-					<h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">
+					<h2
+						class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
+					>
+						Explore Our Work
+					</h2>
+					<p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+						A curated showcase of our projects. From modern residences to
+						commercial masterpieces, see how we bring visions to life.
+					</p>
+				</div>
+
+				<!-- Swiper Carousel -->
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider1.jpg"
+								alt="Gallery 1"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Modern Residence</span
+								>
+							</div>
+						</div>
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider2.jpg"
+								alt="Gallery 2"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Modern Residence</span
+								>
+							</div>
+						</div>
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider3.jpg"
+								alt="Gallery 3"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Kitchen Renovation</span
+								>
+							</div>
+						</div>
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider4.jpg"
+								alt="Gallery 3"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Kitchen Renovation</span
+								>
+							</div>
+						</div>
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider5.jpg"
+								alt="Gallery 3"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Commercial Space</span
+								>
+							</div>
+						</div>
+						<div
+							class="swiper-slide rounded-3xl overflow-hidden shadow-lg group"
+						>
+							<img
+								src="images/slider/slider6.jpg"
+								alt="Gallery 3"
+								class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+							/>
+							<div
+								class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center"
+							>
+								<span class="text-white text-lg md:text-xl font-semibold"
+									>Commercial Space</span
+								>
+							</div>
+						</div>
+
+						<!-- Add more slides as needed -->
+					</div>
+
+					<!-- Custom Arrows -->
+					<div class="swiper-button-next custom-arrow animate-bounce-right">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-10 w-10 text-blue-500"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 5l7 7-7 7"
+							/>
+						</svg>
+					</div>
+					<div class="swiper-button-prev custom-arrow animate-bounce-left">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-10 w-10 text-blue-500"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M15 19l-7-7 7-7"
+							/>
+						</svg>
+					</div>
+
+					<!-- Pagination -->
+					<div class="swiper-pagination mt-6"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section
+			id="about"
+			class="relative w-full py-32 min-h-[500px] bg-gray-50 overflow-hidden"
+		>
+			<!-- Floating accent shapes -->
+			<span
+				class="absolute w-32 h-32 bg-blue-200/20 rounded-full blur-2xl top-10 left-8 animate-float-slow"
+			></span>
+			<span
+				class="absolute w-24 h-24 bg-blue-300/10 rounded-full blur-xl bottom-16 right-8 animate-float-medium"
+			></span>
+
+			<div class="relative max-w-7xl mx-auto px-6 text-center md:text-left">
+				<div class="lg:flex lg:items-center lg:gap-16">
+					<!-- Text Content -->
+					<div class="lg:flex-1">
+						<h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+							About <span class="text-blue-500">BlueRock Builders</span>
+						</h2>
+						<p class="text-lg md:text-xl text-gray-700 mb-6">
+							At BlueRock Builders, we are committed to turning your vision into
+							reality. From residential homes to commercial projects, our team
+							delivers exceptional craftsmanship, attention to detail, and
+							reliable service at every step.
+						</p>
+						<p class="text-lg md:text-xl text-gray-700 mb-8">
+							With years of experience, cutting-edge techniques, and a passion
+							for excellence, we ensure every project is completed on time and
+							to the highest standard. Let’s build something amazing together.
+						</p>
+						<a
+							href="contact.html"
+							class="inline-block px-10 py-4 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+						>
+							Contact Us
+						</a>
+					</div>
+
+					<!-- Image -->
+					<div class="lg:flex-1 mt-12 lg:mt-0">
+						<img
+							src="images/about-image.jpg"
+							alt="Construction work"
+							class="rounded-3xl shadow-2xl w-full max-w-lg mx-auto lg:mx-0"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Section -->
+		<section
+			id="services"
+			class="relative w-full py-32 bg-gray-50 overflow-hidden"
+		>
+			<!-- Floating accent shapes -->
+			<span
+				class="absolute w-32 h-32 bg-blue-200/20 rounded-full blur-2xl top-10 left-4 animate-float-slow"
+			></span>
+			<span
+				class="absolute w-24 h-24 bg-blue-300/10 rounded-full blur-xl bottom-16 right-8 animate-float-medium"
+			></span>
+
+			<div class="relative max-w-7xl mx-auto px-6 text-center z-10">
+				<!-- Section Header -->
+				<div class="text-center mb-16">
+					<h2
+						class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
+					>
 						Our Services
 					</h2>
-					<p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+					<p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
 						We provide a full range of construction services tailored to your
 						needs. Quality, reliability, and precision are our top priorities.
 					</p>
 				</div>
 
 				<!-- Services Grid -->
-				<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+				<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
 					<!-- Service Card Example -->
 					<div
-						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-8 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl"
+						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-2xl"
 					>
-						<!-- Icon Circle -->
 						<div
 							class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6 mx-auto"
 						>
@@ -292,7 +572,7 @@
 
 					<!-- Second Service Card -->
 					<div
-						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-8 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl"
+						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-2xl"
 					>
 						<div
 							class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6 mx-auto"
@@ -323,7 +603,7 @@
 
 					<!-- Third Service Card -->
 					<div
-						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-8 shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl"
+						class="relative bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-2xl"
 					>
 						<div
 							class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6 mx-auto"
@@ -355,57 +635,30 @@
 			</div>
 		</section>
 
-		<!-- Projects portfolio section -->
-		<section class="relative bg-gray-50 py-24 overflow-hidden">
-			<!-- Background floating shapes -->
+		<!-- Projects Section -->
+		<section
+			id="projects"
+			class="relative w-full py-32 bg-gray-50 overflow-hidden"
+		>
+			<!-- Floating accent shapes -->
 			<span
-				class="absolute w-40 h-40 bg-blue-200 rounded-full opacity-15 blur-3xl top-10 left-10 animate-pulse-slow"
+				class="absolute w-32 h-32 bg-blue-200/20 rounded-full blur-2xl top-10 left-4 animate-float-slow"
 			></span>
 			<span
-				class="absolute w-32 h-32 bg-blue-300 rounded-full opacity-10 blur-2xl bottom-20 right-20 animate-pulse-slower"
-			></span>
-			<span
-				class="absolute w-16 h-16 bg-blue-400 rounded-full opacity-20 blur-2xl top-1/3 right-1/4 animate-floating-slow"
-			></span>
-			<span
-				class="absolute w-12 h-12 bg-blue-300 rounded-full opacity-15 blur-xl bottom-1/4 left-1/3 animate-floating-slower"
-			></span>
-			<span
-				class="absolute w-24 h-24 bg-blue-500 rounded-full opacity-10 blur-2xl top-1/2 left-1/2 animate-floating-medium"
-			></span>
-			<!-- Floating sparkles -->
-			<span
-				class="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-floating-slow top-1/4 left-1/3"
-			></span>
-			<span
-				class="absolute w-1.5 h-1.5 bg-blue-300 rounded-full opacity-50 animate-floating-slower top-2/3 left-1/4"
+				class="absolute w-24 h-24 bg-blue-300/10 rounded-full blur-xl bottom-16 right-8 animate-float-medium"
 			></span>
 
-			<!-- Diagonal glimmer -->
-			<span
-				class="absolute w-1/2 h-1 bg-white/20 blur-xl -rotate-12 top-20 left-0 animate-glimmer-slow"
-			></span>
-
-			<!-- Diagonal light streaks -->
-			<span
-				class="absolute w-1/2 h-1 bg-white/20 blur-xl -rotate-12 top-20 left-0 animate-glimmer-slow"
-			></span>
-			<span
-				class="absolute w-1/3 h-1 bg-white/15 blur-xl rotate-6 bottom-40 right-0 animate-glimmer-slower"
-			></span>
-			<span
-				class="absolute w-2/3 h-1 bg-white/10 blur-xl -rotate-6 top-1/2 right-0 animate-glimmer-medium"
-			></span>
-
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+			<div class="relative max-w-7xl mx-auto px-6 text-center z-10">
 				<!-- Section Header -->
 				<div class="text-center mb-16">
-					<h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">
+					<h2
+						class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
+					>
 						Our Projects
 					</h2>
-					<p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+					<p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
 						A glimpse of the high-quality construction projects we’ve completed.
-						Residential, commercial, and renovations, executed with precision.
+						Residential, commercial, and renovations executed with precision.
 					</p>
 				</div>
 
@@ -413,12 +666,12 @@
 				<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
 					<!-- Project Card Example -->
 					<div
-						class="relative bg-white/60 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden group transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:ring-1 hover:ring-blue-300"
+						class="relative overflow-hidden rounded-3xl shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-3xl group"
 					>
 						<img
 							src="images/project1.jpg"
-							alt="Project 1"
-							class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+							alt="Luxury Residential Home"
+							class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
 						/>
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6"
@@ -430,12 +683,12 @@
 					</div>
 
 					<div
-						class="relative bg-white/60 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden group transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:ring-1 hover:ring-blue-300"
+						class="relative overflow-hidden rounded-3xl shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-3xl group"
 					>
 						<img
 							src="images/project2.jpg"
-							alt="Project 2"
-							class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+							alt="Modern Office Building"
+							class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
 						/>
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6"
@@ -447,12 +700,12 @@
 					</div>
 
 					<div
-						class="relative bg-white/60 backdrop-blur-md rounded-3xl shadow-lg overflow-hidden group transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:ring-1 hover:ring-blue-300"
+						class="relative overflow-hidden rounded-3xl shadow-2xl transform transition duration-500 hover:scale-105 hover:shadow-3xl group"
 					>
 						<img
 							src="images/project3.jpg"
-							alt="Project 3"
-							class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+							alt="Kitchen & Bathroom Renovation"
+							class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
 						/>
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center p-6"
@@ -466,57 +719,36 @@
 			</div>
 		</section>
 
-		<!-- contact form call to action -->
+		<!-- Full-Width Modern Contact CTA Section (Flat, No Card) -->
 		<section
 			id="contact"
-			class="bg-gray-50 py-24"
+			class="relative w-full py-24 bg-gradient-to-r from-blue-50 via-white to-blue-50 overflow-hidden"
 		>
-			<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-				<h2 class="text-3xl font-extrabold text-gray-900 text-center mb-6">
-					Contact Us
+			<!-- Floating accent shapes -->
+			<span
+				class="absolute w-32 h-32 bg-blue-200/20 rounded-full blur-2xl top-10 left-4 animate-float-slow"
+			></span>
+			<span
+				class="absolute w-24 h-24 bg-blue-300/10 rounded-full blur-xl bottom-16 right-8 animate-float-medium"
+			></span>
+			<span
+				class="absolute w-16 h-16 bg-blue-100/20 rounded-full blur-lg top-1/3 right-1/4 animate-float-slower"
+			></span>
+
+			<div class="relative w-full text-center z-10 px-4">
+				<h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+					Ready to Start Your Project?
 				</h2>
-				<p class="text-gray-600 text-center mb-10">
-					Have a project in mind? Send us a message and we'll get back to you.
+				<p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+					Contact BlueRock Builders today for a free consultation and let’s
+					bring your vision to life with precision and excellence.
 				</p>
-
-				<form
-					id="contactForm"
-					class="space-y-6 bg-white p-8 rounded-2xl shadow-xl"
+				<a
+					href="contact.html"
+					class="inline-block px-10 py-4 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
 				>
-					<input
-						type="text"
-						name="name"
-						placeholder="Name"
-						required
-						class="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-					/>
-					<input
-						type="email"
-						name="email"
-						placeholder="Email"
-						required
-						class="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-					/>
-					<textarea
-						name="message"
-						placeholder="Message"
-						required
-						rows="5"
-						class="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-					></textarea>
-
-					<div
-						class="g-recaptcha"
-						data-sitekey="6LdBwL8rAAAAAHaNI8FSexlrmevDc0_7jlU7pVu8"
-					></div>
-
-					<button
-						type="submit"
-						class="w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition"
-					>
-						Send Message
-					</button>
-				</form>
+					Get in Touch
+				</a>
 			</div>
 		</section>
 
@@ -525,6 +757,8 @@
 			async
 			defer
 		></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 		<script src="js/main.js"></script>
 	</body>
 </html>

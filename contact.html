@@ -6,84 +6,121 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>Contact - BlueRock Builders</title>
-
-		<!-- Tailwind CSS -->
+		<title>Contact BlueRock Builders</title>
 		<script src="https://cdn.tailwindcss.com"></script>
-
-		<!-- Optional: custom CSS -->
-		<link
-			rel="stylesheet"
-			href="css/style.css"
-		/>
+		<script
+			src="https://www.google.com/recaptcha/api.js"
+			async
+			defer
+		></script>
 	</head>
-	<body class="bg-gray-50">
-		<!-- Navbar -->
-		<nav class="bg-white shadow-md sticky top-0 z-50">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	<body class="bg-gray-50 font-sans">
+		<!-- Modern Navbar -->
+		<nav class="fixed w-full bg-white/70 backdrop-blur-md shadow-md z-50">
+			<div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
 				<div class="flex justify-between items-center h-16">
-					<!-- Logo & Name -->
-					<div class="flex-shrink-0 relative">
-						<a
-							href="index.html"
-							class="flex items-center gap-3 group relative overflow-hidden"
+					<!-- Logo -->
+					<a
+						href="index.html"
+						class="flex items-center gap-3 group relative overflow-hidden"
+					>
+						<!-- Logo -->
+						<div
+							class="p-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-lg shadow-md"
 						>
-							<div
-								class="p-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl shadow-md z-10"
+							<img
+								src="images/logo.png"
+								alt="BlueRock Logo"
+								class="h-8 w-8 object-contain"
+							/>
+						</div>
+
+						<!-- Animated Company Name -->
+						<span
+							class="text-2xl font-extrabold tracking-wide transition-all duration-500"
+						>
+							<span
+								class="text-gray-800 group-hover:text-blue-500 transition-colors duration-500"
 							>
-								<img
-									src="images/logo.png"
-									alt="BlueRock Builders Logo"
-									class="h-8 w-8 object-contain"
-								/>
-							</div>
-							<span class="text-2xl font-extrabold tracking-wide z-10 relative">
-								<span class="text-gray-800 group-hover:text-blue-600"
-									>BlueRock</span
-								>
-								<span class="text-blue-500 group-hover:text-black"
-									>Builders</span
-								>
+								BlueRock
 							</span>
-						</a>
-					</div>
+							<span
+								class="text-blue-500 group-hover:text-gray-800 transition-colors duration-500"
+							>
+								Builders
+							</span>
+						</span>
+					</a>
 
 					<!-- Desktop Menu -->
-					<div class="hidden md:flex space-x-6 items-center">
+					<div class="hidden md:flex items-center space-x-8">
 						<a
-							href="index.html"
-							class="text-gray-700 font-medium hover:text-blue-600 transition duration-300"
-							>Home</a
+							href="index.html#hero"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
+							Home
+							<span
+								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+							></span>
+						</a>
 						<a
-							href="about.html"
-							class="text-gray-700 font-medium hover:text-blue-600 transition duration-300"
-							>About</a
+							href="index.html#about"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
+							About
+							<span
+								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+							></span>
+						</a>
 						<a
-							href="services.html"
-							class="text-gray-700 font-medium hover:text-blue-600 transition duration-300"
-							>Services</a
+							href="index.html#services"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
+							Services
+							<span
+								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+							></span>
+						</a>
 						<a
-							href="projects.html"
-							class="text-gray-700 font-medium hover:text-blue-600 transition duration-300"
-							>Projects</a
+							href="index.html#projects"
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
+							Projects
+							<span
+								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+							></span>
+						</a>
 						<a
 							href="contact.html"
-							class="text-gray-700 font-medium hover:text-blue-600 transition duration-300"
-							>Contact</a
+							class="nav-link text-gray-700 font-medium relative group hover:text-blue-600 transition"
 						>
+							Contact
+							<span
+								class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"
+							></span>
+						</a>
 					</div>
 
 					<!-- Mobile Menu Button -->
 					<div class="md:hidden">
 						<button
 							id="menu-btn"
-							class="text-gray-700 focus:outline-none text-2xl"
+							class="text-gray-700 focus:outline-none text-3xl"
 						>
-							☰
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-8 w-8"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 8h16M4 16h16"
+								/>
+							</svg>
 						</button>
 					</div>
 				</div>
@@ -92,93 +129,169 @@
 			<!-- Mobile Menu -->
 			<div
 				id="mobile-menu"
-				class="hidden md:hidden px-2 pt-2 pb-3 space-y-1"
+				class="hidden md:hidden px-6 py-4 space-y-4 bg-white/90 backdrop-blur-md shadow-lg rounded-b-lg"
 			>
 				<a
-					href="index.html"
-					class="block text-gray-700 font-medium hover:text-blue-500"
+					href="#hero"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Home</a
 				>
 				<a
-					href="about.html"
-					class="block text-gray-700 font-medium hover:text-blue-500"
+					href="#about"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>About</a
 				>
 				<a
-					href="services.html"
-					class="block text-gray-700 font-medium hover:text-blue-500"
+					href="index.html"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Services</a
 				>
 				<a
-					href="projects.html"
-					class="block text-gray-700 font-medium hover:text-blue-500"
+					href="index.html#projects"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Projects</a
 				>
 				<a
-					href="contact.html"
-					class="block text-gray-700 font-medium hover:text-blue-500"
+					href="#contact"
+					class="block text-gray-700 font-medium py-2 px-4 rounded hover:bg-blue-50 hover:text-blue-600 transition"
 					>Contact</a
 				>
 			</div>
 		</nav>
 
-		<!-- Hero Section -->
-		<section class="bg-blue-50 py-32">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-				<h1 class="text-5xl font-extrabold text-gray-900 mb-4">Get in Touch</h1>
-				<p class="text-xl text-gray-700 max-w-2xl mx-auto">
-					Have a project in mind? Reach out and let BlueRock Builders make it a
-					reality.
+		<!-- Hero -->
+		<section class="bg-gradient-to-r from-blue-50 to-blue-100 py-20">
+			<div class="max-w-4xl mx-auto text-center">
+				<h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+					Contact Us
+				</h1>
+				<p class="mt-4 text-gray-700 text-lg">
+					Get in touch with us for quotes, inquiries, or consultations.
 				</p>
 			</div>
 		</section>
 
 		<!-- Contact Section -->
-		<section
-			id="contact"
-			class="bg-gray-50 py-20"
-		>
-			<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="text-center mb-12">
-					<h2 class="text-3xl font-extrabold text-gray-900">Contact Us</h2>
-					<p class="mt-4 text-gray-700">
-						Send us a message and we'll get back to you as soon as possible.
-					</p>
+		<section class="py-24">
+			<div
+				class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-start"
+			>
+				<!-- Contact Form -->
+				<div class="bg-white rounded-2xl shadow-2xl p-12">
+					<h2 class="text-3xl font-bold text-gray-900 mb-6">
+						Send Us a Message
+					</h2>
+					<form
+						id="contactForm"
+						class="space-y-6"
+					>
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-gray-700 font-semibold mb-2"
+									>Name</label
+								>
+								<input
+									type="text"
+									name="name"
+									placeholder="Your Name"
+									required
+									class="w-full border border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-700 font-semibold mb-2"
+									>Phone</label
+								>
+								<input
+									type="tel"
+									name="phone"
+									placeholder="Your Phone Number"
+									required
+									class="w-full border border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition"
+								/>
+							</div>
+						</div>
+
+						<div>
+							<label class="block text-gray-700 font-semibold mb-2"
+								>Email</label
+							>
+							<input
+								type="email"
+								name="email"
+								placeholder="Your Email"
+								required
+								class="w-full border border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition"
+							/>
+						</div>
+
+						<div>
+							<label class="block text-gray-700 font-semibold mb-2"
+								>Message</label
+							>
+							<textarea
+								name="message"
+								placeholder="Your Message"
+								required
+								rows="5"
+								class="w-full border border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition"
+							></textarea>
+						</div>
+
+						<div
+							class="g-recaptcha"
+							data-sitekey="6LdBwL8rAAAAAHaNI8FSexlrmevDc0_7jlU7pVu8"
+						></div>
+
+						<button
+							type="submit"
+							class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-lg transition-all duration-300"
+						>
+							Send Message
+						</button>
+					</form>
 				</div>
 
-				<form id="contactForm">
-					<input
-						type="text"
-						name="name"
-						placeholder="Name"
-						required
-					/>
-					<input
-						type="email"
-						name="email"
-						placeholder="Email"
-						required
-					/>
-					<textarea
-						name="message"
-						placeholder="Message"
-						required
-					></textarea>
-					<div
-						class="g-recaptcha"
-						data-sitekey="6LdBwL8rAAAAAHaNI8FSexlrmevDc0_7jlU7pVu8"
-					></div>
-					<button type="submit">Send</button>
-				</form>
+				<!-- Contact Info Panel -->
+				<div class="bg-white rounded-2xl shadow-2xl p-12 flex flex-col gap-6">
+					<h2 class="text-3xl font-bold text-gray-900 mb-6">
+						Contact Information
+					</h2>
+					<div class="flex items-center gap-4">
+						<span class="text-blue-600 text-xl">📞</span>
+						<a
+							href="tel:+1234567890"
+							class="text-gray-700 font-medium hover:text-blue-600 transition"
+							>+1 (347) 856-2564</a
+						>
+					</div>
+					<div class="flex items-center gap-4">
+						<span class="text-blue-600 text-xl">✉️</span>
+						<a
+							href="mailto:info@bluerockbuilders.com"
+							class="text-gray-700 font-medium hover:text-blue-600 transition"
+							>info@bluerockbuilders.com</a
+						>
+					</div>
+					<div class="flex items-start gap-4">
+						<span class="text-blue-600 text-xl">📍</span>
+						<p class="text-gray-700 font-medium">
+							246 Main Street,<br />New York, N.Y, 11210, United States
+						</p>
+					</div>
+					<p class="mt-6 text-gray-500">
+						We look forward to assisting you with your unique projects.
+					</p>
+				</div>
 			</div>
 		</section>
 
-		<!-- Scripts -->
-		<script
-			src="https://www.google.com/recaptcha/api.js"
-			async
-			defer
-		></script>
-		<script src="js/main.js"></script>
+		<!-- Hover Circle -->
+		<div
+			id="hover-circle"
+			class="pointer-events-none w-4 h-4 rounded-full bg-blue-500 opacity-0 fixed top-0 left-0 z-50 transition-transform duration-200"
+		></div>
+
+		<script src="/js/main.js"></script>
 	</body>
 </html>

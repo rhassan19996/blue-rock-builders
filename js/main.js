@@ -1,62 +1,23 @@
-// js/main.js
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
 
-// ✅ Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', () => {
-	const btn = document.getElementById('menu-btn');
-	const menu = document.getElementById('mobile-menu');
-
-	if (btn && menu) {
-		btn.addEventListener('click', () => {
-			menu.classList.toggle('hidden');
-		});
-	}
+btn.addEventListener('click', () => {
+	menu.classList.toggle('hidden');
+	btn.classList.toggle('text-blue-600');
 });
 
-// ✅ Hover Circle on Logo
-const hoverLink = document.querySelector('a.group');
-const hoverCircle = document.getElementById('hover-circle');
-
-if (hoverLink && hoverCircle) {
-	hoverLink.addEventListener('mousemove', (e) => {
-		const rect = hoverLink.getBoundingClientRect();
-		const x = e.clientX - rect.left - hoverCircle.offsetWidth / 2;
-		const y = e.clientY - rect.top - hoverCircle.offsetHeight / 2;
-
-		hoverCircle.style.transform = `translate(${x}px, ${y}px) scale(1)`;
-		hoverCircle.style.opacity = '0.3';
-	});
-
-	hoverLink.addEventListener('mouseleave', () => {
-		hoverCircle.style.transform = 'scale(0)';
-		hoverCircle.style.opacity = '0';
-	});
-}
-
-// ✅ Contact Form Submission with reCAPTCHA + SendGrid
-document.addEventListener('DOMContentLoaded', () => {
-	const form = document.getElementById('contactForm');
-
-	if (!form) return; // Exit if no contact form on page
-
+if (form) {
 	form.addEventListener('submit', async (e) => {
 		e.preventDefault();
 
-		// Check reCAPTCHA
-		if (typeof grecaptcha === 'undefined') {
-			alert('reCAPTCHA failed to load. Please refresh and try again.');
-			return;
-		}
-
 		const recaptcha = grecaptcha.getResponse();
-		if (!recaptcha) {
-			alert('Please verify you are not a robot.');
-			return;
-		}
+		if (!recaptcha) return alert('Please verify you are not a robot.');
 
-		// Collect form data
 		const data = {
 			name: form.name.value.trim(),
 			email: form.email.value.trim(),
+			phone: form.phone.value.trim(), // added phone
 			message: form.message.value.trim(),
 			recaptcha,
 		};
@@ -69,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 
 			const result = await res.json();
-
 			if (result.success) {
 				alert('✅ Message sent successfully!');
 				form.reset();
@@ -78,8 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
 				alert(`❌ ${result.error || 'Error sending message'}`);
 			}
 		} catch (err) {
-			console.error('Form submission error:', err);
+			console.error(err);
 			alert('❌ Error sending message. Please try again later.');
 		}
 	});
+}
+
+const swiper = new Swiper('.mySwiper', {
+	slidesPerView: 1,
+	spaceBetween: 20,
+	loop: true,
+	centeredSlides: true,
+	autoplay: { delay: 3000, disableOnInteraction: false },
+	pagination: { el: '.swiper-pagination', clickable: true },
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+	breakpoints: {
+		640: { slidesPerView: 2 },
+		1024: { slidesPerView: 3 },
+	},
 });
