@@ -66,3 +66,26 @@ export default async function handler(req, res) {
 		return res.status(500).json({ error: 'Email sending failed' });
 	}
 }
+try {
+	const response = await emailjs.send(
+		process.env.EMAILJS_SERVICE,
+		process.env.EMAILJS_TEMPLATE,
+		{
+			title: `Message from ${name}`,
+			name,
+			email,
+			message,
+			time: new Date().toLocaleString(),
+		},
+		{
+			publicKey: process.env.EMAILJS_PUBLIC,
+			privateKey: process.env.EMAILJS_PRIVATE,
+		}
+	);
+
+	console.log('✅ EmailJS response:', response);
+	return res.status(200).json({ success: true });
+} catch (err) {
+	console.error('❌ EmailJS error:', err);
+	return res.status(500).json({ error: 'Email sending failed' });
+}
