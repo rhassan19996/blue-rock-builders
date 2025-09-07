@@ -12,12 +12,13 @@ if (form) {
 		e.preventDefault();
 
 		const recaptcha = grecaptcha.getResponse();
-		if (!recaptcha) return alert('Please verify you are not a robot.');
+		if (!recaptcha)
+			return showBanner('errorBanner', 'Please verify you are not a robot.');
 
 		const data = {
 			name: form.name.value.trim(),
 			email: form.email.value.trim(),
-			phone: form.phone.value.trim(), // added phone
+			phone: form.phone.value.trim(),
 			message: form.message.value.trim(),
 			recaptcha,
 		};
@@ -31,17 +32,41 @@ if (form) {
 
 			const result = await res.json();
 			if (result.success) {
-				alert('✅ Message sent successfully!');
 				form.reset();
 				grecaptcha.reset();
+				showBanner(
+					'successBanner',
+					'✅ Message sent! We will reply back to you soon.'
+				);
 			} else {
-				alert(`❌ ${result.error || 'Error sending message'}`);
+				showBanner(
+					'errorBanner',
+					`❌ ${result.error || 'Error sending message'}`
+				);
 			}
 		} catch (err) {
 			console.error(err);
-			alert('❌ Error sending message. Please try again later.');
+			showBanner(
+				'errorBanner',
+				'❌ Error sending message. Please try again later.'
+			);
 		}
 	});
+}
+
+function showBanner(id, message) {
+	const banner = document.getElementById(id);
+	banner.querySelector('span').textContent = message;
+
+	// Show with entrance animation
+	banner.classList.remove('hidden', '-translate-y-5');
+	banner.classList.add('opacity-100', 'translate-y-0');
+
+	// Auto-hide after 4 seconds
+	setTimeout(() => {
+		banner.classList.add('-translate-y-5', 'opacity-0');
+		setTimeout(() => banner.classList.add('hidden'), 500);
+	}, 4000);
 }
 
 const swiper = new Swiper('.mySwiper', {

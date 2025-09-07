@@ -201,3 +201,12 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
+/* success banner */
+#successBanner {
+	transition: opacity 0.5s ease;
+	opacity: 1;
+}
+#successBanner.hidden {
+	opacity: 0;
+}

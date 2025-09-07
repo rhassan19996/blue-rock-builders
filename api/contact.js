@@ -1,4 +1,3 @@
-// Using ESM syntax (make sure package.json has "type": "module")
 import sgMail from '@sendgrid/mail';
 import fetch from 'node-fetch';
 
@@ -9,9 +8,9 @@ export default async function handler(req, res) {
 		return res.status(405).json({ error: 'Method not allowed' });
 	}
 
-	const { name, email, message, recaptcha } = req.body;
+	const { name, email, phone, message, recaptcha } = req.body;
 
-	// 1️⃣ Verify reCAPTCHA
+	// Verify reCAPTCHA
 	try {
 		const verify = await fetch(
 			`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${recaptcha}`,
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
 		return res.status(500).json({ error: 'reCAPTCHA verification failed' });
 	}
 
-	// 2️⃣ Send email via SendGrid
+	//Send email via SendGrid
 	const msg = {
 		to: process.env.CONTACT_RECEIVER_EMAIL, // Your email to receive messages
 		from: process.env.CONTACT_SENDER_EMAIL, // Verified SendGrid sender
